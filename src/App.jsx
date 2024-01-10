@@ -1,6 +1,7 @@
 
 import React,{useEffect,useState} from 'react';
 import './App.css';
+import { useMemo } from 'react';
 
 // Do not change this
 const LARGE_NUMBER = 1000000000;
@@ -69,7 +70,8 @@ function App() {
       <h1 >{value}</h1>
       <button onClick={handleChangeValue}>Change Value</button>
       <button onClick={handleList}>Show List</button>
-      <h2>{delayFunction()}</h2>
+      {/* <h2>{delayFunction()}</h2> */}
+      <h2>{useMemo(() => delayFunction(),[value])}</h2>
       <div>
         {currentList.map((item,index)=>{
           return <h2 key={index}>{item}</h2>
